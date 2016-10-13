@@ -9,15 +9,14 @@ Rails.application.routes.draw do
 	#namespace :api, :path => "/", :constraints => {:subdomain => "api"} do
 	#API Definition
 	namespace :api, path: '/', defaults: { format: 'json' } do
-		namespace :v1 do
-			resources :projects
+		namespace :v1 do		
+			resources :projects, :only => [:show, :index]
 		end
 	end	
 
-
 	devise_for :users
 	resources :sessions, only: [:update]
-  resources :projects
+    resources :projects
 
   #get 'projects/index'
  # get 'home/index'

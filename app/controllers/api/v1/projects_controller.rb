@@ -6,11 +6,12 @@ class API::V1::ProjectsController < ApplicationController
     respond_to do |format|
       format.json { render :json => @projects }
     end
-
+  end
+    respond_to :json
     def show
       respond_with Project.find(params[:id])
      end
-  end
+  
 
 end
 # module API
