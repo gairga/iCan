@@ -1,17 +1,25 @@
 Rails.application.routes.draw do
-#  get 'projects/index'
+  #Como queremos que nuestras respuestas sean en JSON , también lo hará establecer el 
+  #formato por defecto de esta api
+  #a JSON. Cambiar el código de seguridad .
+#  namespace :api, defaults:{ format: :json }do
 
- # get 'projects/edit'
+#amespace :api, :path => "/", :constraints => {:subdomain => "api"} do
+#namespace :api,  :path => "/", :constraints => {:subdomain => "api"}, :defaults => {:format => :json} do
+	#namespace :api, :path => "/", :constraints => {:subdomain => "api"} do
+	#API Definition
+	namespace :api, path: '/', defaults: { format: 'json' } do
+		namespace :v1 do
+			resources :projects
+		end
+	end	
 
-  #get 'projects/new'
 
-  #get 'projects/_form'
-
-  devise_for :users
-  resources :sessions, only: [:update]
+	devise_for :users
+	resources :sessions, only: [:update]
   resources :projects
 
-#  get 'project/index'
+  #get 'projects/index'
  # get 'home/index'
  # get 'dashboard/index'
  # get 'sessions/index'
